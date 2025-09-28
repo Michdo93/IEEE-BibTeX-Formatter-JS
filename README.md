@@ -65,7 +65,7 @@ The script requires a **`bibtex.bib`** file in the same directory.
 
 | Action               | Inline Syntax       | Description                                                                                                            |
 | :------------------- | :------------------ | :--------------------------------------------------------------------------------------------------------------------- |
-| **Reference Source** | `... according to.` | Use **\`\`**. The `BIBTEX_KEY` must match an entry key in your \`bibtex.bib\` file (e.g., \`@article{pytorch, ...}\`). As example \`[cite:pytorch]\`. |
+| **Reference Source** | `... according to.` | Use **\`\`**. The `BIBTEX_KEY` must match an entry key in your \`bibtex.bib\` file (e.g., \`@article{pytorch, ...}\`). As example `[cite:pytorch]`. |
 
 ### C. Figures, Tables, and Source Codes
 
