@@ -87,3 +87,117 @@ The script reads abbreviations from `<abbr>` tags in the HTML and optionally fro
 | :-------------- | :--------------------------------------------------------- | :------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Define Abbr** | `<abbr>HTML</abbr>` or `<abbr>Hyper Text Markup Language</abbr>` | A file named `abbreviations.json` in the document root. | The script searches for `<abbr>` tags, tries to resolve the full form using the JSON file, sets the `title` attribute, and generates the **List of Abbreviations** (`abbreviations-list`). |
 | **JSON Format** | N/A                                                        | `{"HTML": "Hyper Text Markup Language", "JS": "JavaScript"}`  | The key is the abbreviation; the value is the long form.                                                                                                                                   |
+
+## 4\. Full example
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wissenschaftlicher Bericht mit BibTeX-Formatter</title>
+    <link rel="stylesheet" href="ieee-bibtex-formatter.css">
+</head>
+<body>
+
+    <h1>Title of the scientific report</h1>
+    
+    <h2 id="contents">Table of contents</h2>
+    <ol id="contents-list"></ol>
+
+    <h2 id="abbreviations">List of abbreviations</h2>
+    <ol id="abbreviations-list"></ol>
+
+    <h2 class="chapters" data-name="ch:introduction">Introdcution into the web technology</h2>
+    <p>
+        The foundations of the modern web are based on three pillars: <abbr>HTML</abbr>, <abbr>CSS</abbr>, and <abbr>JS</abbr>. These technologies enable the creation of complex, interactive applications. This work focuses on performance optimization. An essential aspect is the correct use of <abbr>DOM</abbr>.
+    </p>
+    <p>
+        As shown in chapter [ch:methodology], the speed of data processing is crucial.
+    </p>
+
+    <figure class="figures" id="fig:web_stack">
+        <img src="https://via.placeholder.com/600x200?text=Web+Stack+Diagramm" alt="Diagram of the web technology stack">
+        <figcaption>Schematic representation of the modern web stack.</figcaption>
+    </figure>
+    <p>
+        Figure [fig:web_stack] shows the hierarchical dependency of the components.
+    </p>
+
+    <h2 class="chapters" data-name="ch:methodology">Methodology and implementation</h2>
+
+    <h3 class="chapters" data-name="ch:methodology_data">Data collection and preparation</h3>
+    <p>
+        A series of benchmarks were performed to evaluate performance (see Table [tbl:benchmarks]). The algorithms were implemented in Python.
+    </p>
+
+    <figure class="source-codes" id="src:python_script">
+        <figcaption>Python script for data cleansing</figcaption>
+        <pre><code class="language-python">
+import pandas as pd
+df = pd.read_csv('data.csv')
+df['cleaned'] = df['raw'].str.strip()
+print("Adjustment completed.")
+        </code></pre>
+    </figure>
+    <p>
+        The code block used is shown in source code [src:python_script].
+    </p>
+
+    <table class="tables" id="tbl:benchmarks">
+        <caption><span class="caption">Benchmark results (loading time in ms)</span></caption>
+        <thead>
+            <tr>
+                <th>Edge</th>
+                <th>Min</th>
+                <th>Max</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Chrome</td>
+                <td>120</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <td>Firefox</td>
+                <td>135</td>
+                <td>160</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="chapters" data-name="ch:conclusion">Summary</h2>
+    <p>
+        The results confirm the hypothesis. All references can be found in the sources [cite:Michdo93].
+    </p>
+    
+    <h2 id="figures">List of figures</h2>
+    <ol id="figures-list"></ol>
+
+    <h2 id="tables">List of tables</h2>
+    <ol id="tables-list"></ol>
+
+    <h2 id="source-codes">List of source codes</h2>
+    <ol id="source-codes-list"></ol>
+
+    <h2 id="references">List of references</h2>
+    <ol id="references-list"></ol>
+
+    <script>
+        window.bibtexConfig = {
+            lang: "EN", // you can choose between EN or DE
+            abstract: false,
+            list_of_contents: true,
+            list_of_references: true,
+            list_of_figures: true,
+            list_of_tables: true,
+            list_of_source_codes: true,
+            list_of_abbreviations: true // needs abbreviations.json
+        };
+    </script>
+    <script src="ieee-bibtex-formatter.js"></script>
+
+</body>
+</html>
+```
