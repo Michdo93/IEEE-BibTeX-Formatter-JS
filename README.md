@@ -1,6 +1,8 @@
 # IEEE-BibTeX-Formatter-JS
 The IEEE BibTeX Formatter JS Library formats citations in IEEE style and adds them to a source directory. Additional features include the creation of a table of contents, list of figures, tables, source code and abbreviations. Corresponding links are added to the HTML code. This is ideal for integrating a scientific style into your website.
 
+> **_NOTE:_**  This is neither a parser nor a converter. It does not generate PDF files either. It simply allows you to display citations and sources on websites in accordance with the IEEE standard using the BibTeX format. Style differences such as page layouts, fonts, and line spacing are not included, as I believe this would detract from the individual design of websites.
+
 ## 1\. Core Setup and Configuration
 
 The script's behavior is controlled by a global configuration object, `window.bibtexConfig`, which must be defined **before** including the main JavaScript file (`ieee-bibtex-formatter.js`).
@@ -201,3 +203,27 @@ print("Adjustment completed.")
 </body>
 </html>
 ```
+
+In this case, abbreviations.json would look as follows:
+
+```
+{
+    "HTML": "Hypertext Markup Language",
+    "CSS": "Cascading Style Sheets",
+    "JS": "JavaScript",
+}
+```
+
+In this very simple example, the bibtex.bib file would also show only a single source and would look like this.
+
+```
+@misc{Michdo93,
+    author        = {Michael Christian Dörflinger},
+    title         = {{G}it{H}ub - {M}ichdo93/{I}{E}{E}{E}-{B}ib{T}e{X}-{F}ormatter-{J}{S}: {T}he {I}{E}{E}{E} {B}ib{T}e{X} {F}ormatter {J}{S} {L}ibrary formats citations in {I}{E}{E}{E} style and adds them to a source directory. {A}dditional features include the creation of a table of contents, list of figures, tables, source code and abbreviations. {C}orresponding links are added to the {H}{T}{M}{L} code. {T}his is ideal for integrating a scientific style into your website. --- github.com},
+    howpublished  = {\url{https://github.com/Michdo93/IEEE-BibTeX-Formatter-JS/}},
+    year          = {},
+    note          = {[Accessed 29-09-2025]}
+}
+```
+
+> **_NOTE:_**  Many more sources may also be listed. They only appear in the list of sources when a source is cited/used accordingly.
